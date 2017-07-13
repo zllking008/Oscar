@@ -76,9 +76,12 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="2017duanwuPost.html" />
     <Content Include="client.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="fishpaydemo.aspx" />
+    <Content Include="GGLCanvas.html" />
+    <Content Include="scripts\GGLCard.js" />
     <Content Include="random.aspx" />
     <Content Include="Record.aspx" />
     <Content Include="Web.config" />
