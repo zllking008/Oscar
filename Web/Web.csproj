@@ -81,6 +81,23 @@
     <Content Include="Default.aspx" />
     <Content Include="fishpaydemo.aspx" />
     <Content Include="GGLCanvas.html" />
+    <Content Include="pin\css\mgame2.css" />
+    <Content Include="pin\img\1.gif" />
+    <Content Include="pin\img\10.gif" />
+    <Content Include="pin\img\2.gif" />
+    <Content Include="pin\img\3.gif" />
+    <Content Include="pin\img\4.gif" />
+    <Content Include="pin\img\5.gif" />
+    <Content Include="pin\img\6.gif" />
+    <Content Include="pin\img\7.gif" />
+    <Content Include="pin\img\8.gif" />
+    <Content Include="pin\img\9.gif" />
+    <Content Include="pin\img\bg-index.jpg" />
+    <Content Include="pin\img\bg.jpg" />
+    <Content Include="pin\index.html" />
+    <Content Include="pin\js\jquery-1.7.2.min.js" />
+    <Content Include="pin\js\jquery.js" />
+    <Content Include="pin\js\mgame2.js" />
     <Content Include="scripts\GGLCard.js" />
     <Content Include="random.aspx" />
     <Content Include="Record.aspx" />
@@ -144,17 +161,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4697</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

@@ -43,11 +43,11 @@
 
         $(function () {
 
-            GGLCanvas.Init('ggl', 'http://localhost:40003/activity/GetCode?r=' + Math.random(), RewardCallback);
+            GGLCanvas.Init('ggl', 'http://192.168.6.14:40003/activity/GetCode?r=' + Math.random(), RewardCallback, "轻按刮开获取幸运号码", true, 550, 141);
         })
         function RewardCallback() {
             var query = {};
-            var urls = "http://192.168.6.14:40003/Activity/ShowCode";
+            var urls = "http://localhost:40003/Activity/ShowCode";
             var params = {};
             //alert(params.jq);
             AjaxRequest(urls, query, OnShowCallback, params);
