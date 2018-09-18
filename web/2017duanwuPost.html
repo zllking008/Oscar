@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="http://image.qpgame.com/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="http://image.qpgame.com/js/dialog.js"></script>
+    <script type="text/javascript" src="http://image.qpgame.com/js/self-adaptions.js"></script>
+    <script type="text/javascript" src="https://image.qpgame.com/js/layer/mobile/layer.js"></script>
+    <script>
+        function AjaxRequest(urls, querys, FunCallback, params) {
+            $.ajax({
+                type: "POST",
+                url: urls,
+                data: querys,
+                dataType: 'json',
+                timeout: 30000,
+                beforeSend: function () {
+
+                }, //发送请求
+                success: function (json) {
+                    params = params || {};
+                    FunCallback(json, params);
+                },
+                complete: function (XMLHttpRequest, status) {
+                    if (status == "timeout") {
+                        var val = parseInt($("#timeout").html());
+                        $("#timeout").html(val + 1);
+                        //alert("请求超时，请重试！");
+                    }
+                }
+
+            });
+        }
+        function Draw1(id) {
+            var count = parseInt($("#a1count").val());
+            var lz = $("#lz1").val();
+            for (var i = 1; i <= count; i++) {
+                var query = { "appId": "wx6c63c20efe7d77c3", "wxUnionId": "oxAC5wcRixo7uFikpIWlqaGySmTY", "boatId": lz, "openId": "okHCJw_Y0AhQ9HnpaDihY2_tYGTU", "openNickName": "晴天Lucky" };
+                var urls = "http://192.168.1.223:40015/Activity/LongZhouDraw1";
+                var params = {"jqObj":$("#"+id)};
+                AjaxRequest(urls, query, OnDrawCallback, params);
+            }
+        }
+
+        function Draw2(id)
+        {
+            var count = parseInt($("#a2count").val());
+            var lz = $("#lz2").val();
+            for (var i = 1; i <= count; i++) {
+                var query = { "appId": "wx6c63c20efe7d77c3", "wxUnionId": "oxAC5wcRixo7uFikpIWlqaGySmTY", "boatId": lz, "openId": "okHCJw_Y0AhQ9HnpaDihY2_tYGTU", "openNickName": "晴天Lucky" };
+                var urls = "http://192.168.1.223:40015/Activity/LongZhouDraw2";
+                var params = { "jqObj": $("#" + id) };
+                AjaxRequest(urls, query, OnDrawCallback, params);
+            }
+        }
+        function OnDrawCallback(json,params) {
+            if(json.IsSuccess)
+            {
+                var $success = $(params.jqObj).find(".span_Success");
+                var val = parseInt($success.html());
+                $success.html(val + 1);
+            }
+            else
+            {
+                var $error = $(params.jqObj).find(".span_Error");
+                var val = parseInt($error.html());
+                $error.html(val + 1);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>2017端午活动测试脚本</h1>
+    <div>请求超时的计数：<span id="timeout">0</span></div><br />
+    <div id="a1">
+        <h2>活动1：擂鼓脚本</h2>
+        次数：<input type="text" id="a1count" value="50" /><br />
+        龙舟：<input type="text" id="lz1" value="LZ01" /> LZ01  LZ02 LZ03
+        <input type="button" value="点击抽" onclick="Draw1('a1')" /><br />
+        成功的次数：<span class="span_Success">0</span><br />
+        失败的次数：<span class="span_Error">0</span>
+    </div>
+    <br />
+    <hr />
+
+    <div id="a2">
+        <h2>活动2：抽奖脚本</h2>
+        次数：<input type="text" id="a2count" value="50" /><br />
+        龙舟：<input type="text" id="lz2" value="LZ01" /> LZ01  LZ02 LZ03
+        <input type="button" value="点击抽" onclick="Draw2('a2')" /><br />
+        成功的次数：<span class="span_Success">0</span><br />
+        失败的次数：<span class="span_Error">0</span>
+    </div>
+</body>
+</html>

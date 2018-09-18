@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script type="text/javascript" src="http://image.qpgame.com/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="http://image.qpgame.com/js/dialog.js"></script>
+    <script type="text/javascript" src="https://image.qpgame.com/js/layer/mobile/layer.js"></script>
+    <script type="text/javascript" src="/scripts/GGLCard.js"></script>
+    <script type="text/javascript">
+        function AjaxRequest(urls, querys, FunCallback, params) {
+            $.ajax({
+                type: "POST",
+                url: urls,
+                data: querys,
+                dataType: 'json',
+                timeout: 30000,
+                beforeSend: function () {
+
+                    layer.open({
+                        type: 2,
+                        content: '提交中',
+                        style: 'font-size:18px'
+                    });
+                }, //发送请求
+                success: function (json) {
+                    layer.closeAll("loading");
+                    params = params || {};
+                    FunCallback(json, params);
+                },
+                complete: function (XMLHttpRequest, status) {
+                    if (status == "timeout") {
+                        layer.closeAll("loading");
+                        ShowMsg("请求超时，请重试！");
+                    }
+                }
+
+            });
+        }
+    </script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            GGLCanvas.Init('ggl', 'http://192.168.6.14:40003/activity/GetCode?r=' + Math.random(), RewardCallback, "轻按刮开获取幸运号码", true, 550, 141);
+        })
+        function RewardCallback() {
+            var query = {};
+            var urls = "http://localhost:40003/Activity/ShowCode";
+            var params = {};
+            //alert(params.jq);
+            AjaxRequest(urls, query, OnShowCallback, params);
+        }
+        function OnShowCallback(json, params) {
+            
+            if (json == null || json == undefined) return;
+            alert("开出号码：" + json);
+        }
+
+
+    </script>
+</head>
+<body>
+    <canvas id="ggl" width="200" height="100" />
+</body>
+</html>

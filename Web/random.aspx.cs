@@ -67,5 +67,29 @@ namespace Web
             }
             return bmp;
         }
+
+        public void Pool()
+        {
+            System.Threading.ThreadPool.QueueUserWorkItem((a) =>
+            {
+                while (true)
+                {
+
+                }
+            });
+
+            //ThreadPool.QueueUserWorkItem(new WaitCallback(addtest), "Testaa");
+            //private void addtest(object aa)
+            //{
+            //    long result = 0;
+            //    for (int i = 0; i < 1000000000; i++)
+            //    {
+            //        result += i;
+            //    }
+            //    MessageBox.Show(result.ToString() + aa.ToString());
+
+            //}
+    }
+
     }
 }
